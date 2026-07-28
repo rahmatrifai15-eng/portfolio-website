@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Jasa Pembuatan Website UMKM | Rahmat Rifai</title>
+    <meta name="description" content="Kumpulan hasil kerja jasa pembuatan website untuk UMKM dan bisnis lokal di Makassar, Sulawesi Barat, dan Indonesia Timur. Lihat website asli klien kami.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Phosphor) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#039B47',
+                        primaryHover: '#027a38',
+                        darkBg: '#050505',
+                        darkCard: '#111111',
+                        darkBorder: '#222222',
+                        lightBg: '#F8F9FA',
+                        lightCard: '#FFFFFF',
+                        lightBorder: '#E5E5E5',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Subtle Background Pattern */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .dark .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Glass Navbar */
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #333; }
+
+        /* Simple Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Iframe wrapper styling */
+        .browser-mockup {
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .dark .browser-mockup {
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+        }
+        
+        /* Interactive iframe container */
+        .iframe-container {
+            /* Ensures smooth scrolling inside the iframe */
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+<body class="bg-lightBg text-gray-900 dark:bg-darkBg dark:text-gray-100 transition-colors duration-500 relative overflow-x-hidden">
+
+    <div class="fixed inset-0 pointer-events-none z-[-2] overflow-hidden bg-grid-pattern">
+        <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 dark:bg-primary/5 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-[150px]"></div>
+    </div>
+
+    <nav id="navbar" class="fixed w-full z-40 top-0 transition-all duration-500 border-b border-lightBorder dark:border-darkBorder glass-nav bg-white/70 dark:bg-darkBg/70">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="text-xl font-bold tracking-tight flex items-baseline hover:opacity-80 transition-opacity">
+                Rahmat Rifai<span class="text-primary text-2xl leading-none ml-[2px]">.</span>
+            </a>
+
+            <!-- Right Controls -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <!-- Back link (Desktop) -->
+                <a href="index.html" class="hidden md:flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" data-lang-id="Kembali ke Beranda" data-lang-en="Back to Home">
+                    <i class="ph-bold ph-arrow-left"></i> Kembali ke Beranda
+                </a>
+
+                <!-- Toggles Container -->
+                <div class="flex items-center bg-white/60 dark:bg-black/30 rounded-full p-1 border border-lightBorder dark:border-darkBorder shadow-sm backdrop-blur-md">
+                    <!-- Language Toggle -->
+                    <button id="lang-toggle" class="relative flex items-center w-[72px] h-8 rounded-full overflow-hidden text-sm font-bold">
+                        <div id="lang-pill" class="absolute w-1/2 h-full bg-white dark:bg-[#333] rounded-full shadow-md transition-transform duration-300 left-0"></div>
+                        <span class="relative w-1/2 text-center z-10 transition-colors duration-300 lang-text-id text-primary">ID</span>
+                        <span class="relative w-1/2 text-center z-10 transition-colors duration-300 lang-text-en text-gray-500 hover:text-gray-900 dark:hover:text-white">EN</span>
+                    </button>
+                    
+                    <div class="w-px h-4 bg-gray-300 dark:bg-gray-700 mx-1"></div>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-200 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white" aria-label="Toggle Theme">
+                        <i class="ph ph-sun text-lg dark:hidden"></i>
+                        <i class="ph ph-moon text-lg hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20">
+        
+        <!-- Hero SEO Section -->
+        <section class="max-w-4xl mx-auto px-6 mb-20 text-center reveal">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-6 text-gray-900 dark:text-white leading-tight">
+                <span data-lang-id="Portfolio Website" data-lang-en="Website Portfolio">Portfolio Website</span> <br/>
+                <span class="text-primary" data-lang-id="UMKM & Bisnis Lokal" data-lang-en="for SMBs & Local Business">UMKM & Bisnis Lokal</span>
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed" 
+               data-lang-id="Berikut adalah beberapa website yang saya kerjakan untuk membantu bisnis di Makassar, Sulawesi Barat, dan Indonesia Timur tampil profesional di pencarian Google. Anda dapat mencoba berinteraksi langsung dengan website di bawah ini." 
+               data-lang-en="Here are some websites I've built to help businesses in Makassar, West Sulawesi, and Eastern Indonesia look professional on Google search. You can interact directly with the live websites below.">
+                Berikut adalah beberapa website yang saya kerjakan untuk membantu bisnis di Makassar, Sulawesi Barat, dan Indonesia Timur tampil profesional di pencarian Google. Anda dapat mencoba berinteraksi langsung dengan website di bawah ini.
+            </p>
+
+            <a href="#showcase" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder text-gray-900 dark:text-white font-medium hover:border-primary dark:hover:border-primary transition-colors group shadow-sm">
+                <i class="ph-bold ph-arrow-down text-primary group-hover:animate-bounce"></i>
+                <span data-lang-id="Lihat Website" data-lang-en="View Websites">Lihat Website</span>
+            </a>
+        </section>
+
+        <section id="showcase" class="max-w-6xl mx-auto px-6 space-y-24">
+
+            <!-- PROJECT 1: Ruang Solusi Indonesia -->
+            <div class="reveal flex flex-col lg:flex-row items-center gap-10">
+                <!-- Text Detail -->
+                <div class="w-full lg:w-1/3 order-2 lg:order-1">
+                    <div class="inline-block px-3 py-1 mb-4 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest border border-primary/20">
+                        Corporate / Consultant
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">Ruang Solusi Indonesia</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm md:text-base leading-relaxed"
+                       data-lang-id="Website company profile profesional untuk perusahaan konsultan. Didesain dengan tata letak yang bersih (clean design) untuk memudahkan calon klien membaca layanan dan membangun kepercayaan (trust) bisnis."
+                       data-lang-en="A professional company profile website for a consulting firm. Designed with a clean layout to make it easy for potential clients to read about services and build business trust.">
+                        Website company profile profesional untuk perusahaan konsultan. Didesain dengan tata letak yang bersih (clean design) untuk memudahkan calon klien membaca layanan dan membangun kepercayaan (trust) bisnis.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://ruangsolusiindonesia.vercel.app/" target="_blank" class="inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-full bg-primary hover:bg-primaryHover text-white text-sm font-bold transition-colors">
+                            <span data-lang-id="Buka di Tab Baru" data-lang-en="Open in New Tab">Buka di Tab Baru</span> <i class="ph-bold ph-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Live Website Iframe (Browser Mockup) -->
+                <div class="w-full lg:w-2/3 order-1 lg:order-2">
+                    <div class="browser-mockup bg-white dark:bg-darkCard rounded-xl border border-lightBorder dark:border-darkBorder overflow-hidden flex flex-col h-[500px] md:h-[600px]">
+                        <!-- Browser Header -->
+                        <div class="h-10 bg-gray-100 dark:bg-[#1a1a1a] flex items-center px-4 border-b border-lightBorder dark:border-darkBorder">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="mx-4 flex-1 h-6 bg-white dark:bg-[#0a0a0a] rounded flex items-center px-3 border border-lightBorder dark:border-[#333]">
+                                <i class="ph ph-lock text-gray-400 text-xs mr-2"></i>
+                                <span class="text-[11px] font-medium text-gray-500 truncate">ruangsolusiindonesia.vercel.app</span>
+                            </div>
+                        </div>
+                        <!-- Live Iframe -->
+                        <div class="flex-1 relative iframe-container bg-gray-50 dark:bg-[#050505]">
+                            <!-- Overlay to guide user to scroll inside -->
+                            <div class="absolute inset-0 z-10 pointer-events-none flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity">
+                                <div class="bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm" data-lang-id="Anda bisa scroll web ini" data-lang-en="You can scroll this web">Anda bisa scroll web ini</div>
+                            </div>
+                            <iframe src="https://ruangsolusiindonesia.vercel.app/" class="w-full h-full border-none" loading="lazy" title="Ruang Solusi Indonesia Live Preview"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-px bg-lightBorder dark:bg-darkBorder reveal"></div>
+
+            <!-- PROJECT 2: PO Vibes -->
+            <div class="reveal flex flex-col lg:flex-row items-center gap-10">
+                <!-- Live Website Iframe (Browser Mockup) -->
+                <div class="w-full lg:w-2/3">
+                    <div class="browser-mockup bg-white dark:bg-darkCard rounded-xl border border-lightBorder dark:border-darkBorder overflow-hidden flex flex-col h-[500px] md:h-[600px]">
+                        <!-- Browser Header -->
+                        <div class="h-10 bg-gray-100 dark:bg-[#1a1a1a] flex items-center px-4 border-b border-lightBorder dark:border-darkBorder">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="mx-4 flex-1 h-6 bg-white dark:bg-[#0a0a0a] rounded flex items-center px-3 border border-lightBorder dark:border-[#333]">
+                                <i class="ph ph-lock text-gray-400 text-xs mr-2"></i>
+                                <span class="text-[11px] font-medium text-gray-500 truncate">povibeslandingpagehtml.vercel.app</span>
+                            </div>
+                        </div>
+                        <!-- Live Iframe -->
+                        <div class="flex-1 relative iframe-container bg-gray-50 dark:bg-[#050505]">
+                            <div class="absolute inset-0 z-10 pointer-events-none flex justify-center items-center opacity-0 hover:opacity-100 transition-opacity">
+                                <div class="bg-black/50 text-white text-xs px-3 py-1 rounded-full backdrop-blur-sm" data-lang-id="Anda bisa scroll web ini" data-lang-en="You can scroll this web">Anda bisa scroll web ini</div>
+                            </div>
+                            <iframe src="https://povibeslandingpagehtml.vercel.app/" class="w-full h-full border-none" loading="lazy" title="PO Vibes Live Preview"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Detail -->
+                <div class="w-full lg:w-1/3">
+                    <div class="inline-block px-3 py-1 mb-4 rounded-full bg-pink-500/10 text-pink-600 dark:text-pink-400 text-xs font-bold uppercase tracking-widest border border-pink-500/20">
+                        Event & F&B
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">PO Vibes</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm md:text-base leading-relaxed"
+                       data-lang-id="Landing page untuk acara dan promosi kuliner. Memiliki desain visual yang energik untuk menarik segmen anak muda. Dilengkapi dengan navigasi simpel agar pengunjung bisa melihat daftar menu dan langsung memesan."
+                       data-lang-en="A landing page for events and culinary promotions. Features an energetic visual design to attract the youth segment. Equipped with simple navigation so visitors can view the menu and order directly.">
+                        Landing page untuk acara dan promosi kuliner. Memiliki desain visual yang energik untuk menarik segmen anak muda. Dilengkapi dengan navigasi simpel agar pengunjung bisa melihat daftar menu dan langsung memesan.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <a href="https://povibeslandingpagehtml.vercel.app/" target="_blank" class="inline-flex justify-center items-center gap-2 px-5 py-2.5 rounded-full bg-white dark:bg-white text-gray-900 hover:bg-gray-200 dark:hover:bg-gray-200 text-sm font-bold transition-colors border border-gray-300 dark:border-transparent">
+                            <span data-lang-id="Buka di Tab Baru" data-lang-en="Open in New Tab">Buka di Tab Baru</span> <i class="ph-bold ph-arrow-up-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="py-24 px-6 reveal">
+            <div class="max-w-3xl mx-auto bg-lightCard dark:bg-darkCard border border-lightBorder dark:border-darkBorder rounded-[2rem] p-10 md:p-14 text-center">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white" data-lang-id="Tertarik membuat website untuk bisnis Anda?" data-lang-en="Interested in building a website for your business?">Tertarik membuat website untuk bisnis Anda?</h2>
+                <p class="text-gray-600 dark:text-gray-400 mb-8 font-medium" data-lang-id="Mari berdiskusi dengan santai mengenai kebutuhan dan target usaha Anda." data-lang-en="Let's have a casual discussion about your business needs and goals.">
+                    Mari berdiskusi dengan santai mengenai kebutuhan dan target usaha Anda.
+                </p>
+                <a href="https://wa.me/6282343432072?text=Halo%20Rahmat,%20saya%20sudah%20melihat%20portfolio%20website%20Anda.%20Boleh%20diskusi%20tentang%20jasa%20pembuatan%20website?" target="_blank" class="inline-flex justify-center items-center gap-2 bg-primary hover:bg-primaryHover text-white px-8 py-3.5 rounded-full font-bold transition-colors">
+                    <i class="ph-fill ph-whatsapp-logo text-xl"></i> 
+                    <span data-lang-id="Chat WhatsApp" data-lang-en="WhatsApp Chat">Chat WhatsApp</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-lightBg dark:bg-darkBg border-t border-lightBorder dark:border-darkBorder py-8 px-6 text-center text-sm font-medium text-gray-500">
+        <p>&copy; 2026 Rahmat Rifai. 
+            <span data-lang-id="Jasa Website UMKM." data-lang-en="SMB Website Services.">Jasa Website UMKM.</span>
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Theme Toggle Logic ---
+            const themeBtn = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+            });
+
+            // --- Language Toggle Logic ---
+            const langBtn = document.getElementById('lang-toggle');
+            const langPill = document.getElementById('lang-pill');
+            let currentLang = localStorage.getItem('lang') || 'id'; 
+            
+            const updateLanguageUI = () => {
+                const isId = currentLang === 'id';
+                langPill.style.transform = isId ? 'translateX(0)' : 'translateX(100%)';
+                
+                const textId = document.querySelector('.lang-text-id');
+                const textEn = document.querySelector('.lang-text-en');
+                
+                if(isId) {
+                    textId.classList.replace('text-gray-500', 'text-primary');
+                    textId.classList.remove('dark:hover:text-white', 'hover:text-gray-900');
+                    textEn.classList.replace('text-primary', 'text-gray-500');
+                    textEn.classList.add('dark:hover:text-white', 'hover:text-gray-900');
+                } else {
+                    textEn.classList.replace('text-gray-500', 'text-primary');
+                    textEn.classList.remove('dark:hover:text-white', 'hover:text-gray-900');
+                    textId.classList.replace('text-primary', 'text-gray-500');
+                    textId.classList.add('dark:hover:text-white', 'hover:text-gray-900');
+                }
+
+                // Update text based on data attributes
+                document.querySelectorAll('[data-lang-id]').forEach(el => {
+                    el.innerHTML = el.getAttribute(`data-lang-${currentLang}`);
+                });
+            };
+
+            // Initialize Language
+            updateLanguageUI();
+
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'id' ? 'en' : 'id';
+                localStorage.setItem('lang', currentLang);
+                updateLanguageUI();
+            });
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
