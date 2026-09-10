@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="jqtPRxnBk180IoFl5UrZ0Lnb_YpQ_UVr-O5S4J9tkWM" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Premium | Website & Desain | Rahmat Rifai</title>
+    <meta name="description" content="Kumpulan hasil kerja jasa pembuatan website dan desain grafis untuk UMKM dan bisnis lokal di Makassar, Sulawesi Barat, dan Indonesia Timur.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons (Phosphor) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#039B47',
+                        primaryHover: '#027a38',
+                        darkBg: '#030303',
+                        darkCard: '#0f0f0f',
+                        darkBorder: '#1f1f1f',
+                        lightBg: '#fafafa',
+                        lightCard: '#FFFFFF',
+                        lightBorder: '#ebebeb',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    },
+                    boxShadow: {
+                        'soft-xl': '0 20px 40px -15px rgba(0,0,0,0.05)',
+                        'glow-primary': '0 0 40px -10px rgba(3, 155, 71, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Subtle & Premium Background Pattern */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+        .dark .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        }
+
+        /* Glass Navbar Enhancement */
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.6);
+        }
+        .dark .glass-nav {
+            background: rgba(3, 3, 3, 0.6);
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #333; }
+
+        /* Cinematic Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px) scale(0.98);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Premium Browser Mockup */
+        .browser-mockup {
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.06);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dark .browser-mockup {
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+        .portfolio-item:hover .browser-mockup {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 30px 60px -15px rgba(3, 155, 71, 0.15);
+            border-color: rgba(3, 155, 71, 0.4);
+        }
+        .dark .portfolio-item:hover .browser-mockup {
+            box-shadow: 0 30px 60px -15px rgba(3, 155, 71, 0.25);
+            border-color: rgba(3, 155, 71, 0.5);
+        }
+        
+        .iframe-container {
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Running Text Animation */
+        @keyframes scroll-text {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            display: flex;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .marquee-content {
+            display: flex;
+            animation: scroll-text 40s linear infinite;
+        }
+
+        /* Slider Animations */
+        @keyframes scroll-gallery {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .gallery-track-1 {
+            display: flex;
+            width: max-content;
+            animation: scroll-gallery 35s linear infinite;
+        }
+        .gallery-track-2 {
+            display: flex;
+            width: max-content;
+            animation: scroll-gallery 45s linear infinite reverse; /* Reverse for dynamic feel */
+        }
+        .gallery-track-1:hover, .gallery-track-2:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Edge Masking */
+        .slider-mask {
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        }
+
+        /* Filter Tab Styles */
+        .filter-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: #039B47;
+            transition: width 0.3s ease;
+        }
+        .filter-btn.active::after {
+            width: 40%;
+        }
+    </style>
+</head>
+<body class="bg-lightBg text-gray-900 dark:bg-darkBg dark:text-gray-100 transition-colors duration-500 relative overflow-x-hidden selection:bg-primary/30 selection:text-primary">
+
+    <!-- Premium Background Effects -->
+    <div class="fixed inset-0 pointer-events-none z-[-2] overflow-hidden bg-grid-pattern">
+        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-primary/10 dark:bg-primary/5 rounded-full blur-[140px] animate-pulse-slow"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-emerald-500/10 dark:bg-emerald-500/5 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 top-0 transition-all duration-500 border-b border-lightBorder/50 dark:border-darkBorder/50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="https://rahmatrifai.agency" class="text-xl font-extrabold tracking-tighter flex items-baseline hover:opacity-80 transition-opacity">
+                Rahmat Rifai<span class="text-primary text-3xl leading-none ml-[2px]">.</span>
+            </a>
+
+            <div class="flex items-center gap-5">
+                <a href="https://rahmatrifai.agency" class="hidden md:flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-colors" data-lang-id="Kembali" data-lang-en="Back">
+                    <i class="ph-bold ph-arrow-left"></i> Kembali
+                </a>
+
+                <div class="flex items-center bg-white/80 dark:bg-[#111]/80 rounded-full p-1 border border-lightBorder dark:border-darkBorder shadow-sm backdrop-blur-xl">
+                    <!-- Lang Toggle -->
+                    <button id="lang-toggle" class="relative flex items-center w-[76px] h-[34px] rounded-full overflow-hidden text-sm font-bold">
+                        <div id="lang-pill" class="absolute w-1/2 h-full bg-lightBg dark:bg-[#222] rounded-full shadow-sm transition-transform duration-300 left-0 border border-gray-200/50 dark:border-gray-700/50"></div>
+                        <span class="relative w-1/2 text-center z-10 transition-colors duration-300 lang-text-id text-primary">ID</span>
+                        <span class="relative w-1/2 text-center z-10 transition-colors duration-300 lang-text-en text-gray-400 hover:text-gray-900 dark:hover:text-white">EN</span>
+                    </button>
+                    
+                    <div class="w-px h-4 bg-gray-200 dark:bg-gray-800 mx-1"></div>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="w-[34px] h-[34px] flex items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-[#222] transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white">
+                        <i class="ph-fill ph-sun text-lg dark:hidden"></i>
+                        <i class="ph-fill ph-moon text-lg hidden dark:block"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-36 pb-20">
+        
+        <!-- Hero Section -->
+        <section class="max-w-5xl mx-auto px-6 mb-24 text-center reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 dark:bg-primary/20 text-primary font-bold text-xs uppercase tracking-widest mb-8 border border-primary/20 animate-float">
+                <i class="ph-fill ph-sparkle"></i> Premium Showcase
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-gray-900 dark:text-white leading-[1.1]">
+                <span data-lang-id="Portfolio Website & Desain" data-lang-en="Website & Design Portfolio">Karya Visual & Website</span> <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-emerald-400" data-lang-id="UMKM & Bisnis Lokal" data-lang-en="for SMBs & Local Business">Masa Depan Bisnis Anda.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-500 dark:text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed font-medium" 
+               data-lang-id="Eksplorasi hasil kerja profesional yang dirancang khusus untuk meningkatkan identitas visual dan konversi digital bisnis lokal. Jelajahi detail setiap karya di bawah ini." 
+               data-lang-en="Explore professional works specifically designed to elevate the visual identity and digital conversion of local businesses. Discover the details below.">
+                Eksplorasi hasil kerja profesional yang dirancang khusus untuk meningkatkan identitas visual dan konversi digital bisnis lokal. Jelajahi detail setiap karya di bawah ini.
+            </p>
+        </section>
+
+        <!-- Marquee Divider -->
+        <div class="w-full border-y border-lightBorder dark:border-darkBorder bg-white/50 dark:bg-[#0a0a0a]/50 backdrop-blur-md py-4 mb-32 overflow-hidden reveal marquee-container">
+            <div class="marquee-content text-sm font-bold text-gray-400 dark:text-gray-500 tracking-[0.2em] uppercase items-center">
+                <span class="mx-4 flex items-center gap-12">
+                    <span>Modern Web Design</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>Social Media Management</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>Brand Identity</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>UI/UX Interface</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>High Conversion Rates</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                </span>
+                <span class="mx-4 flex items-center gap-12">
+                    <span>Modern Web Design</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>Social Media Management</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>Brand Identity</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>UI/UX Interface</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                    <span>High Conversion Rates</span> <i class="ph-fill ph-asterisk text-primary/50 text-xs"></i>
+                </span>
+            </div>
+        </div>
+
+        <section id="showcase" class="max-w-7xl mx-auto px-6">
+            
+            <!-- Elegant Filter Bar -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-24 reveal bg-white/80 dark:bg-darkCard/80 p-2 rounded-full border border-lightBorder dark:border-darkBorder shadow-soft-xl backdrop-blur-xl w-max mx-auto">
+                <button class="filter-btn active px-6 py-3 rounded-full text-sm font-bold bg-gray-900 dark:bg-white text-white dark:text-gray-900 transition-all shadow-md" data-filter="all" data-lang-id="Semua Karya" data-lang-en="All Works">Semua Karya</button>
+                <button class="filter-btn px-6 py-3 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all" data-filter="desain" data-lang-id="Feeds & Poster" data-lang-en="Feeds & Poster">Feeds & Poster</button>
+                <button class="filter-btn px-6 py-3 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all" data-filter="website" data-lang-id="Website" data-lang-en="Website">Website</button>
+                <button class="filter-btn px-6 py-3 rounded-full text-sm font-bold text-gray-500 hover:text-gray-900 dark:hover:text-white transition-all" data-filter="aplikasi" data-lang-id="Aplikasi" data-lang-en="App">Aplikasi</button>
+            </div>
+
+            <!-- 
+                STRUKTUR HIERARKI BARU:
+                1. Desain (Prioritas Pertama)
+                2. Spacing Besar
+                3. Website 1
+                4. Website 2 (Zig-zag)
+                5. Website 3
+                6. Website 4 (Zig-zag)
+            -->
+            <div class="flex flex-col gap-32 md:gap-40" id="portfolio-container">
+                
+                <!-- ==================== 1. DESAIN (BARIS PERTAMA) ==================== -->
+                <div class="portfolio-item reveal" data-category="desain">
+                    <!-- Ditambahkan flex-col-reverse di mobile agar slider duluan, tapi di desktop teks di kiri -->
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <!-- Teks Kiri -->
+                        <div class="w-full lg:w-1/3 order-2 lg:order-1">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-md bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 text-xs font-bold uppercase tracking-widest border border-yellow-500/20">
+                                <i class="ph-fill ph-bezier-curve"></i> Creative Design
+                            </div>
+                            <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white tracking-tighter leading-tight">Social Media <br/>& Poster</h2>
+                            <p class="text-gray-500 dark:text-gray-400 mb-8 text-base leading-relaxed"
+                               data-lang-id="Eksplorasi visual modern untuk kampanye promosi kuliner. Menggabungkan gaya desain kekinian seperti pop-art collage, fisheye effect, dan 3D CGI typography untuk memaksimalkan interaksi dan konversi audiens."
+                               data-lang-en="Modern visual exploration for culinary promotional campaigns. Combining modern design styles like pop-art collage, fisheye effects, and 3D CGI typography to maximize audience interaction.">
+                                Eksplorasi visual modern untuk kampanye promosi kuliner. Menggabungkan gaya desain kekinian seperti pop-art collage, fisheye effect, dan 3D CGI typography untuk memaksimalkan interaksi dan konversi audiens.
+                            </p>
+                        </div>
+                        
+                        <!-- Slider Kanan - 10 Gambar Lengkap -->
+                        <div class="w-full lg:w-2/3 order-1 lg:order-2 overflow-hidden relative flex flex-col gap-6 py-4 slider-mask">
+                            
+                            <!-- BARIS ATAS (Track 1) -->
+                            <div class="gallery-track-1 flex gap-6 items-center">
+                                <div class="flex gap-6 shrink-0 px-3 items-center">
+                                    <!-- 1 -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.phototourl.com/free/2026-09-10-e1a0597f-3fa0-44ee-8cdf-40383167e813.png" alt="Desain 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 2 -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.phototourl.com/free/2026-09-10-dc9a8a1f-eaf3-47ff-b3c4-2881405a5ba6.png" alt="Desain 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 3 (Poster Promo) -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group relative hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                        <div class="absolute bottom-5 left-5 right-5 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                                            <p class="text-white font-bold text-sm tracking-wide">Promosikan Poster Saya</p>
+                                            <p class="text-white/70 text-xs font-medium mt-1">Personal Branding Agency</p>
+                                        </div>
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/G582sRkO.png" alt="Poster Utama Promosi" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 4 (New 1) -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/9Gd7H42v.png" alt="Desain 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 5 (New 2) -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/GzzXSyKy.png" alt="Desain 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                </div>
+                                <!-- DUPLIKAT BARIS ATAS -->
+                                <div class="flex gap-6 shrink-0 px-3 items-center" aria-hidden="true">
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.phototourl.com/free/2026-09-10-e1a0597f-3fa0-44ee-8cdf-40383167e813.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.phototourl.com/free/2026-09-10-dc9a8a1f-eaf3-47ff-b3c4-2881405a5ba6.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group relative hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent z-10 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+                                        <div class="absolute bottom-5 left-5 right-5 z-20 transform translate-y-2 group-hover:translate-y-0 transition-transform">
+                                            <p class="text-white font-bold text-sm tracking-wide">Promosikan Poster Saya</p>
+                                            <p class="text-white/70 text-xs font-medium mt-1">Personal Branding Agency</p>
+                                        </div>
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/G582sRkO.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/9Gd7H42v.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/GzzXSyKy.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- BARIS BAWAH (Track 2) -->
+                            <div class="gallery-track-2 flex gap-6 items-center">
+                                <div class="flex gap-6 shrink-0 px-3 items-center">
+                                    <!-- 6 -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.phototourl.com/free/2026-09-10-b7356579-4d43-4c5e-9914-659c5ff77910.png" alt="Desain 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 7 -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/kJl1paw6.png" alt="Desain 7" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 8 (New 3) -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/NiTfZqWo.png" alt="Desain 8" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 9 (New 4) -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/NzpdV974.png" alt="Desain 9" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <!-- 10 (New 5) -->
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/C653rU4Q.png" alt="Desain 10" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                </div>
+                                <!-- DUPLIKAT BARIS BAWAH -->
+                                <div class="flex gap-6 shrink-0 px-3 items-center" aria-hidden="true">
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.phototourl.com/free/2026-09-10-b7356579-4d43-4c5e-9914-659c5ff77910.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/kJl1paw6.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/NiTfZqWo.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/NzpdV974.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                    <div class="w-56 md:w-64 shrink-0 aspect-square rounded-3xl overflow-hidden shadow-soft-xl border border-lightBorder dark:border-darkBorder transition-all duration-500 group hover:-translate-y-2 hover:shadow-glow-primary hover:border-primary/50">
+                                        <img src="https://cdn.imagetourls.com/uploads/tyImg/C653rU4Q.png" alt="" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pembatas Visual Opsional -->
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-lightBorder dark:via-darkBorder to-transparent my-4"></div>
+
+                <!-- ==================== 2. WEBSITE 1 (Mockup Kiri, Teks Kanan) ==================== -->
+                <div class="portfolio-item reveal" data-category="website">
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="w-full lg:w-3/5">
+                            <div class="browser-mockup bg-white dark:bg-darkCard rounded-[2rem] border border-lightBorder dark:border-darkBorder overflow-hidden flex flex-col h-[550px] md:h-[650px] relative group">
+                                <!-- Glassmorphism Browser Header -->
+                                <div class="h-14 bg-white/60 dark:bg-[#111]/60 flex items-center px-6 border-b border-lightBorder/50 dark:border-darkBorder/50 backdrop-blur-xl absolute top-0 w-full z-20">
+                                    <div class="flex gap-2.5">
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                                    </div>
+                                    <div class="mx-6 flex-1 h-8 bg-gray-100/80 dark:bg-[#000]/50 rounded-lg flex items-center justify-center px-4 shadow-inner border border-transparent dark:border-[#222]">
+                                        <i class="ph-fill ph-lock-key text-gray-400 text-xs mr-2"></i>
+                                        <span class="text-[12px] font-semibold text-gray-500 truncate mt-0.5 tracking-wide">ruangsolusiindonesia.vercel.app</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1 relative iframe-container bg-gray-50 dark:bg-darkBg pt-14">
+                                    <div class="absolute inset-0 z-10 pointer-events-none flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5 dark:bg-black/20">
+                                        <div class="bg-black/80 text-white text-xs px-5 py-2.5 rounded-full backdrop-blur-md shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-medium tracking-wide">
+                                            Scroll to explore
+                                        </div>
+                                    </div>
+                                    <iframe src="https://ruangsolusiindonesia.vercel.app/" class="w-full h-full border-none" loading="lazy" title="Ruang Solusi Indonesia Preview"></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-2/5">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-md bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest border border-primary/20">
+                                <i class="ph-fill ph-buildings"></i> Corporate / Consultant
+                            </div>
+                            <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white tracking-tighter leading-tight">Ruang Solusi Indonesia</h2>
+                            <p class="text-gray-500 dark:text-gray-400 mb-10 text-base leading-relaxed"
+                               data-lang-id="Website company profile premium untuk perusahaan konsultan. Dirancang dengan whitespace yang lega, tipografi tegas, dan layout asimetris untuk membangun otoritas serta kepercayaan audiens korporat."
+                               data-lang-en="A premium company profile website for a consulting firm. Designed with ample whitespace, bold typography, and asymmetrical layouts to build authority and corporate trust.">
+                                Website company profile premium untuk perusahaan konsultan. Dirancang dengan whitespace yang lega, tipografi tegas, dan layout asimetris untuk membangun otoritas serta kepercayaan audiens korporat.
+                            </p>
+                            
+                            <a href="https://ruangsolusiindonesia.vercel.app/" target="_blank" class="inline-flex justify-center items-center gap-3 px-8 py-4 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20">
+                                <span data-lang-id="Kunjungi Website" data-lang-en="Visit Website">Kunjungi Website</span> <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 3. WEBSITE 2 (Teks Kiri, Mockup Kanan) ==================== -->
+                <div class="portfolio-item reveal" data-category="website">
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="w-full lg:w-2/5 order-2 lg:order-1">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-md bg-pink-500/10 text-pink-600 dark:text-pink-400 text-xs font-bold uppercase tracking-widest border border-pink-500/20">
+                                <i class="ph-fill ph-ticket"></i> Event & F&B
+                            </div>
+                            <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white tracking-tighter leading-tight">PO Vibes</h2>
+                            <p class="text-gray-500 dark:text-gray-400 mb-10 text-base leading-relaxed"
+                               data-lang-id="Landing page berenergi tinggi untuk acara dan promosi kuliner. Mengandalkan palet warna kontras dan navigasi super singkat agar segmen anak muda bisa langsung melihat menu dan memesan tanpa hambatan."
+                               data-lang-en="A high-energy landing page for events and culinary promotions. Relies on contrasting color palettes and ultra-short navigation so the youth segment can instantly view menus and order seamlessly.">
+                                Landing page berenergi tinggi untuk acara dan promosi kuliner. Mengandalkan palet warna kontras dan navigasi super singkat agar segmen anak muda bisa langsung melihat menu dan memesan tanpa hambatan.
+                            </p>
+                            
+                            <a href="https://povibeslandingpagehtml.vercel.app/" target="_blank" class="inline-flex justify-center items-center gap-3 px-8 py-4 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20">
+                                <span data-lang-id="Kunjungi Website" data-lang-en="Visit Website">Kunjungi Website</span> <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="w-full lg:w-3/5 order-1 lg:order-2">
+                            <div class="browser-mockup bg-white dark:bg-darkCard rounded-[2rem] border border-lightBorder dark:border-darkBorder overflow-hidden flex flex-col h-[550px] md:h-[650px] relative group">
+                                <div class="h-14 bg-white/60 dark:bg-[#111]/60 flex items-center px-6 border-b border-lightBorder/50 dark:border-darkBorder/50 backdrop-blur-xl absolute top-0 w-full z-20">
+                                    <div class="flex gap-2.5">
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                                    </div>
+                                    <div class="mx-6 flex-1 h-8 bg-gray-100/80 dark:bg-[#000]/50 rounded-lg flex items-center justify-center px-4 shadow-inner border border-transparent dark:border-[#222]">
+                                        <i class="ph-fill ph-lock-key text-gray-400 text-xs mr-2"></i>
+                                        <span class="text-[12px] font-semibold text-gray-500 truncate mt-0.5 tracking-wide">povibeslandingpagehtml.vercel.app</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1 relative iframe-container bg-gray-50 dark:bg-darkBg pt-14">
+                                    <div class="absolute inset-0 z-10 pointer-events-none flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5 dark:bg-black/20">
+                                        <div class="bg-black/80 text-white text-xs px-5 py-2.5 rounded-full backdrop-blur-md shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-medium tracking-wide">
+                                            Scroll to explore
+                                        </div>
+                                    </div>
+                                    <iframe src="https://povibeslandingpagehtml.vercel.app/" class="w-full h-full border-none" loading="lazy" title="PO Vibes Live Preview"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 4. WEBSITE 3 (Mockup Kiri, Teks Kanan) ==================== -->
+                <div class="portfolio-item reveal" data-category="website">
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="w-full lg:w-3/5">
+                            <div class="browser-mockup bg-white dark:bg-darkCard rounded-[2rem] border border-lightBorder dark:border-darkBorder overflow-hidden flex flex-col h-[550px] md:h-[650px] relative group">
+                                <div class="h-14 bg-white/60 dark:bg-[#111]/60 flex items-center px-6 border-b border-lightBorder/50 dark:border-darkBorder/50 backdrop-blur-xl absolute top-0 w-full z-20">
+                                    <div class="flex gap-2.5">
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                                    </div>
+                                    <div class="mx-6 flex-1 h-8 bg-gray-100/80 dark:bg-[#000]/50 rounded-lg flex items-center justify-center px-4 shadow-inner border border-transparent dark:border-[#222]">
+                                        <i class="ph-fill ph-lock-key text-gray-400 text-xs mr-2"></i>
+                                        <span class="text-[12px] font-semibold text-gray-500 truncate mt-0.5 tracking-wide">pethsop-alpha.vercel.app</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1 relative iframe-container bg-gray-50 dark:bg-darkBg pt-14">
+                                    <div class="absolute inset-0 z-10 pointer-events-none flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5 dark:bg-black/20">
+                                        <div class="bg-black/80 text-white text-xs px-5 py-2.5 rounded-full backdrop-blur-md shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-medium tracking-wide">
+                                            Scroll to explore
+                                        </div>
+                                    </div>
+                                    <iframe src="https://pethsop-alpha.vercel.app/" class="w-full h-full border-none" loading="lazy" title="Rahmatrifai Petshop Preview"></iframe>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-full lg:w-2/5">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest border border-blue-500/20">
+                                <i class="ph-fill ph-paw-print"></i> Retail / Pet Care
+                            </div>
+                            <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white tracking-tighter leading-tight">Rahmatrifai Petshop</h2>
+                            <p class="text-gray-500 dark:text-gray-400 mb-10 text-base leading-relaxed"
+                               data-lang-id="Mendefinisikan ulang pengalaman belanja online. Dilengkapi dengan micro-interactions yang playful, katalog dinamis, serta form booking terintegrasi yang membuat pengunjung betah berlama-lama."
+                               data-lang-en="Redefining the online shopping experience. Features playful micro-interactions, a dynamic catalog, and integrated booking forms that keep visitors engaged for longer periods.">
+                                Mendefinisikan ulang pengalaman belanja online. Dilengkapi dengan micro-interactions yang playful, katalog dinamis, serta form booking terintegrasi yang membuat pengunjung betah berlama-lama.
+                            </p>
+                            
+                            <a href="https://pethsop-alpha.vercel.app/" target="_blank" class="inline-flex justify-center items-center gap-3 px-8 py-4 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20">
+                                <span data-lang-id="Kunjungi Website" data-lang-en="Visit Website">Kunjungi Website</span> <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 5. WEBSITE 4 (Teks Kiri, Mockup Kanan) ==================== -->
+                <div class="portfolio-item reveal" data-category="website">
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="w-full lg:w-2/5 order-2 lg:order-1">
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-md bg-orange-500/10 text-orange-600 dark:text-orange-400 text-xs font-bold uppercase tracking-widest border border-orange-500/20">
+                                <i class="ph-fill ph-truck"></i> Industri & Logistik
+                            </div>
+                            <h2 class="text-4xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white tracking-tighter leading-tight">Ekspedisi Alat Berat</h2>
+                            <p class="text-gray-500 dark:text-gray-400 mb-10 text-base leading-relaxed"
+                               data-lang-id="Infrastruktur digital tangguh untuk logistik industri B2B. Menonjolkan spesifikasi teknis armada dan portofolio proyek melalui layout grid industrial yang rapi dan meyakinkan."
+                               data-lang-en="Robust digital infrastructure for B2B industrial logistics. Highlights technical fleet specifications and project portfolios through a neat, convincing industrial grid layout.">
+                                Infrastruktur digital tangguh untuk logistik industri B2B. Menonjolkan spesifikasi teknis armada dan portofolio proyek melalui layout grid industrial yang rapi dan meyakinkan.
+                            </p>
+                            
+                            <a href="https://ekspedisialatberat12.vercel.app/" target="_blank" class="inline-flex justify-center items-center gap-3 px-8 py-4 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm font-bold transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20">
+                                <span data-lang-id="Kunjungi Website" data-lang-en="Visit Website">Kunjungi Website</span> <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="w-full lg:w-3/5 order-1 lg:order-2">
+                            <div class="browser-mockup bg-white dark:bg-darkCard rounded-[2rem] border border-lightBorder dark:border-darkBorder overflow-hidden flex flex-col h-[550px] md:h-[650px] relative group">
+                                <div class="h-14 bg-white/60 dark:bg-[#111]/60 flex items-center px-6 border-b border-lightBorder/50 dark:border-darkBorder/50 backdrop-blur-xl absolute top-0 w-full z-20">
+                                    <div class="flex gap-2.5">
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e] shadow-sm"></div>
+                                        <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f] shadow-sm"></div>
+                                    </div>
+                                    <div class="mx-6 flex-1 h-8 bg-gray-100/80 dark:bg-[#000]/50 rounded-lg flex items-center justify-center px-4 shadow-inner border border-transparent dark:border-[#222]">
+                                        <i class="ph-fill ph-lock-key text-gray-400 text-xs mr-2"></i>
+                                        <span class="text-[12px] font-semibold text-gray-500 truncate mt-0.5 tracking-wide">ekspedisialatberat12.vercel.app</span>
+                                    </div>
+                                </div>
+                                <div class="flex-1 relative iframe-container bg-gray-50 dark:bg-darkBg pt-14">
+                                    <div class="absolute inset-0 z-10 pointer-events-none flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5 dark:bg-black/20">
+                                        <div class="bg-black/80 text-white text-xs px-5 py-2.5 rounded-full backdrop-blur-md shadow-xl transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 font-medium tracking-wide">
+                                            Scroll to explore
+                                        </div>
+                                    </div>
+                                    <iframe src="https://ekspedisialatberat12.vercel.app/" class="w-full h-full border-none" loading="lazy" title="Ekspedisi Alat Berat Preview"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ==================== 6. APLIKASI (BARIS TERAKHIR) ==================== -->
+                <div class="portfolio-item reveal" data-category="aplikasi">
+                    <div class="flex flex-col items-center justify-center text-center p-16 md:p-24 rounded-[3rem] border border-lightBorder dark:border-darkBorder bg-white/50 dark:bg-darkCard/50 backdrop-blur-md shadow-soft-xl w-full transition-all hover:border-primary/30 group">
+                        <div class="w-24 h-24 mb-8 bg-gray-100 dark:bg-[#111] rounded-2xl flex items-center justify-center text-gray-400 dark:text-gray-500 shadow-inner group-hover:bg-primary/10 group-hover:text-primary transition-colors duration-500 transform group-hover:rotate-6">
+                            <i class="ph-fill ph-device-mobile-camera text-5xl"></i>
+                        </div>
+                        <h2 class="text-3xl md:text-5xl font-black mb-6 text-gray-900 dark:text-white tracking-tighter" data-lang-id="Fase Pengembangan" data-lang-en="In Development">Fase Pengembangan</h2>
+                        <p class="text-gray-500 dark:text-gray-400 mb-10 max-w-xl text-base leading-relaxed" 
+                           data-lang-id="Studi kasus antarmuka Aplikasi Mobile (UI/UX) saat ini sedang dalam proses penyusunan dokumentasi. Hubungi saya langsung untuk melihat sneak-peek secara private." 
+                           data-lang-en="Case studies for Mobile App interfaces (UI/UX) are currently undergoing documentation. Contact me directly for a private sneak-peek.">
+                            Studi kasus antarmuka Aplikasi Mobile (UI/UX) saat ini sedang dalam proses penyusunan dokumentasi. Hubungi saya langsung untuk melihat sneak-peek secara private.
+                        </p>
+                        <a href="https://wa.me/6282343432072" target="_blank" class="inline-flex justify-center items-center gap-3 px-8 py-4 rounded-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold transition-all hover:shadow-xl hover:shadow-gray-900/20 dark:hover:shadow-white/20 hover:-translate-y-1">
+                            <i class="ph-fill ph-whatsapp-logo text-xl"></i> <span data-lang-id="Tanya Langsung" data-lang-en="Ask Directly">Tanya Langsung</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-32 px-6 reveal">
+            <div class="max-w-5xl mx-auto bg-gray-900 dark:bg-[#111] rounded-[3rem] p-12 md:p-24 text-center shadow-2xl relative overflow-hidden border border-gray-800 dark:border-[#222]">
+                <!-- Aksen Dekoratif -->
+                <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/3"></div>
+                <div class="absolute bottom-0 left-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/3"></div>
+                
+                <h2 class="text-4xl md:text-6xl font-black mb-8 text-white tracking-tighter relative z-10 leading-[1.1]" data-lang-id="Siap Meningkatkan Level Bisnis Anda?" data-lang-en="Ready to Level Up Your Business?">Siap Meningkatkan <br/>Level Bisnis Anda?</h2>
+                <p class="text-gray-400 mb-12 text-lg md:text-xl max-w-2xl mx-auto relative z-10 font-medium leading-relaxed" data-lang-id="Mari berdiskusi santai mengenai identitas visual yang tepat dan infrastruktur website untuk menguasai pasar digital." data-lang-en="Let's have a casual discussion about the right visual identity and website infrastructure to dominate the digital market.">
+                    Mari berdiskusi santai mengenai identitas visual yang tepat dan infrastruktur website untuk menguasai pasar digital.
+                </p>
+                <a href="https://wa.me/6282343432072?text=Halo%20Rahmat,%20saya%20sudah%20melihat%20portfolio%20premium%20Anda.%20Boleh%20diskusi%20tentang%20jasa%20pembuatan%20website/desain?" target="_blank" class="inline-flex justify-center items-center gap-3 bg-primary hover:bg-primaryHover text-white px-10 py-5 rounded-full font-bold transition-all shadow-glow-primary hover:shadow-[0_0_60px_-10px_rgba(3,155,71,0.5)] hover:-translate-y-1 relative z-10 text-lg">
+                    <i class="ph-fill ph-paper-plane-tilt text-2xl"></i> 
+                    <span data-lang-id="Mulai Proyek Sekarang" data-lang-en="Start a Project Now">Mulai Proyek Sekarang</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-transparent border-t border-lightBorder/50 dark:border-darkBorder/50 py-12 px-6 text-center text-sm font-semibold text-gray-400 dark:text-gray-500">
+        <p>&copy; 2026 Rahmat Rifai. 
+            <span data-lang-id="Premium UI/UX & Web Development." data-lang-en="Premium UI/UX & Web Development.">Premium UI/UX & Web Development.</span>
+        </p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeBtn = document.getElementById('theme-toggle');
+            const html = document.documentElement;
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                html.classList.add('dark');
+            } else {
+                html.classList.remove('dark');
+            }
+            
+            themeBtn.addEventListener('click', () => {
+                html.classList.toggle('dark');
+                localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+            });
+
+            const langBtn = document.getElementById('lang-toggle');
+            const langPill = document.getElementById('lang-pill');
+            let currentLang = localStorage.getItem('lang') || 'id'; 
+            
+            const updateLanguageUI = () => {
+                const isId = currentLang === 'id';
+                langPill.style.transform = isId ? 'translateX(0)' : 'translateX(100%)';
+                
+                const textId = document.querySelector('.lang-text-id');
+                const textEn = document.querySelector('.lang-text-en');
+                
+                if(isId) {
+                    textId.classList.replace('text-gray-400', 'text-primary');
+                    textId.classList.remove('dark:hover:text-white', 'hover:text-gray-900');
+                    textEn.classList.replace('text-primary', 'text-gray-400');
+                    textEn.classList.add('dark:hover:text-white', 'hover:text-gray-900');
+                } else {
+                    textEn.classList.replace('text-gray-400', 'text-primary');
+                    textEn.classList.remove('dark:hover:text-white', 'hover:text-gray-900');
+                    textId.classList.replace('text-primary', 'text-gray-400');
+                    textId.classList.add('dark:hover:text-white', 'hover:text-gray-900');
+                }
+
+                document.querySelectorAll('[data-lang-id]').forEach(el => {
+                    el.innerHTML = el.getAttribute(`data-lang-${currentLang}`);
+                });
+            };
+
+            updateLanguageUI();
+
+            langBtn.addEventListener('click', () => {
+                currentLang = currentLang === 'id' ? 'en' : 'id';
+                localStorage.setItem('lang', currentLang);
+                updateLanguageUI();
+            });
+
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Reset all buttons to inactive styling
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-gray-900', 'dark:bg-white', 'text-white', 'dark:text-gray-900', 'shadow-md', 'active');
+                        b.classList.add('text-gray-500');
+                    });
+                    
+                    // Set clicked button to active styling
+                    btn.classList.add('bg-gray-900', 'dark:bg-white', 'text-white', 'dark:text-gray-900', 'shadow-md', 'active');
+                    btn.classList.remove('text-gray-500');
+
+                    const filterValue = btn.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            
+                            item.classList.remove('active');
+                            setTimeout(() => {
+                                item.classList.add('active');
+                            }, 50);
+                        } else {
+                            item.style.display = 'none';
+                            item.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
+
